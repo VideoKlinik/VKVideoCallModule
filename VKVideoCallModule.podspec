@@ -26,6 +26,6 @@ s.dependency 'TwilioVideo', '3.7.1'
 
 s.source_files = "VKVideoCallModule/**/*.{swift}"
 
-s.resources = "VKVideoCallModule/**/*.{storyboard,xcassets}"
+s.resources = "VKVideoCallModule/**/*.{storyboard}"
 
 end

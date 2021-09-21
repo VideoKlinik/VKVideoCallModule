@@ -19,7 +19,7 @@ public protocol MeetingDelegate {
     func didSubscribeToVideoTrack(participantId: String)
 }
 
-public enum UserType {
+public enum VKUserType {
     case patient
     case primaryDoctor
     case secondaryDoctor
@@ -27,8 +27,11 @@ public enum UserType {
 }
 
 final public class VKVideoCallModule {
-    class func startMeeting(from viewController: UIViewController, accessToken: String, roomName: String, callUUID: UUID, callKitProvider: CXProvider, isRecording: Bool = false, suggestButtonEnabled: Bool = false, willEndAutomatically: Bool = false, userType: UserType, patientName: String, primaryDoctorName: String, secondaryDoctorName: String? = nil, interpreterName: String? = nil) {
-        let meetingVC = UIStoryboard(name: "Meeting", bundle: nil).instantiateViewController(withIdentifier: "MeetingViewController") as! MeetingViewController
+    
+    static var meetingVC: MeetingViewController!
+    
+    public class func startMeeting(from viewController: UIViewController, accessToken: String, roomName: String, callUUID: UUID, callKitProvider: CXProvider, isRecording: Bool = false, suggestButtonEnabled: Bool = false, willEndAutomatically: Bool = false, userType: VKUserType, patientName: String, primaryDoctorName: String, secondaryDoctorName: String? = nil, interpreterName: String? = nil, completion:(()->())?) {
+        meetingVC = UIStoryboard(name: "Meeting", bundle: nil).instantiateViewController(withIdentifier: "MeetingViewController") as! MeetingViewController
         meetingVC.delegate = viewController as? MeetingDelegate
         meetingVC.accessToken = accessToken
         meetingVC.roomName = roomName
@@ -43,6 +46,15 @@ final public class VKVideoCallModule {
         meetingVC.secondaryDoctorName = secondaryDoctorName
         meetingVC.interpreterName = interpreterName
         meetingVC.modalPresentationStyle = .fullScreen
-        viewController.present(meetingVC, animated: true, completion: nil)
+        viewController.present(meetingVC, animated: true) {
+            completion?()
+        }
+    }
+    
+    public class func endMeeting() {
+        meetingVC.state = .disConnected
+        meetingVC.room = nil
+        meetingVC.callKitCompletionHandler = nil
+        meetingVC.userInitiatedDisconnect = false
     }
 }

@@ -74,7 +74,7 @@ class MeetingViewController: UIViewController {
     var doctorName: String!
     var secondaryDoctorName: String?
     var interpreterName: String?
-    var userType: UserType!
+    var userType: VKUserType!
     
     var room: Room?
     
@@ -186,8 +186,6 @@ class MeetingViewController: UIViewController {
         callKitCallController = CXCallController()
 //        self.audioDevice = 
         super.init(coder: aDecoder)
-
-        callKitProvider.setDelegate(self, queue: nil)
     }
 
     deinit {
@@ -229,7 +227,7 @@ class MeetingViewController: UIViewController {
         super.viewDidLoad()
 //        LogManager.log("Meeting did load")
         delegate?.meetingScreenLoaded()//Analytics.setScreenName("meeting_page", screenClass: nil)
-        
+        callKitProvider.setDelegate(self, queue: nil)
         self.infoLabel.text = ""
         self.userNameLabel.text = getCurrentUserName()//User.currentUser.displayName
         self.startPreview()
