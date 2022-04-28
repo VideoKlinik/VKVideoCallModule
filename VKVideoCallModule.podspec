@@ -16,7 +16,7 @@ s.platform            = :ios
 
 s.ios.deployment_target = '11.0'
 
-s.source              = { :git => "https://github.com/VideoKlinik/VKHelperModule", :tag => "1.0.0" }
+s.source              = { :git => "https://github.com/VideoKlinik/VKVideoCallModule", :tag => "1.0.0" }
 
 s.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(SRCROOT)/"}
 
