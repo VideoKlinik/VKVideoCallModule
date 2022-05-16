@@ -149,6 +149,7 @@ class MeetingViewController: UIViewController {
     
     var animationTimer:Timer?
     var soundTimer:Timer?
+    var targetApp: TargetApp!
     
 //    var audioPlayer:AVAudioPlayer!
     
@@ -158,6 +159,9 @@ class MeetingViewController: UIViewController {
     var showDuration = false
     var duration:Int = 0 {
         didSet {
+            guard durationLabel != nil else {
+                return
+            }
             let (h,m,s) = secondsToHoursMinutesSeconds(seconds: duration)
             let seconds = s < 10 ? "0\(s)":"\(s)"
             let minutes = m < 10 ? "0\(m)":"\(m)"
@@ -241,16 +245,14 @@ class MeetingViewController: UIViewController {
         }
         
         nameLabels = [userNameLabel, participantNameLabel, participant2NameLabel, participant3NameLabel]
-        buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
-        nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.mainView.addGestureRecognizer(tap)
     
         self.recordView.isHidden = !isRecording
         
-        suggestButton.layer.cornerRadius = 16
-        suggestButton.isHidden = !suggestButtonEnabled
+        suggestButton?.layer.cornerRadius = 16
+        suggestButton?.isHidden = !suggestButtonEnabled
         
 //        let sound = Bundle.main.path(forResource: "outgoingCall", ofType: "caf")
 //        do{
@@ -307,6 +309,19 @@ class MeetingViewController: UIViewController {
         super.viewWillAppear(animated)
 //        LogManager.log("Meeting will appear")
         UIApplication.shared.isIdleTimerDisabled = true
+        nameLabel.text = doctorName
+        switch targetApp {
+        case .asm:
+            buttonsView.roundCorners([.topLeft, .topRight], radius: 16)
+        case .videoKlinik:
+            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
+            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
+        case .iComed:
+            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
+            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
+        case .none:
+            break
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -802,5 +817,15 @@ private extension UIColor {
             }
         }
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: trans)
+    }
+}
+
+private extension UIView {
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+        let cornerRadii = CGSize(width: radius, height: radius)
+        let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        layer.mask = shape
     }
 }

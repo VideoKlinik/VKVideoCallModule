@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E316135B26DE1A2300A39C20 /* VKVideoCallModule.h in Headers */ = {isa = PBXBuildFile; fileRef = E316135926DE1A2300A39C20 /* VKVideoCallModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E36FDE6F283272660061EA4D /* ASMMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36FDE6E283272660061EA4D /* ASMMeeting.storyboard */; };
 		E3C4963B26DF4FAF009DB798 /* ViewController+CallKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C4963626DF4FAF009DB798 /* ViewController+CallKit.swift */; };
 		E3C4963C26DF4FAF009DB798 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C4963726DF4FAF009DB798 /* MeetingViewController.swift */; };
 		E3C4963D26DF4FAF009DB798 /* CallKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C4963826DF4FAF009DB798 /* CallKitManager.swift */; };
@@ -25,6 +26,7 @@
 		E316135626DE1A2300A39C20 /* VKVideoCallModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VKVideoCallModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E316135926DE1A2300A39C20 /* VKVideoCallModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKVideoCallModule.h; sourceTree = "<group>"; };
 		E316135A26DE1A2300A39C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E36FDE6E283272660061EA4D /* ASMMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ASMMeeting.storyboard; sourceTree = "<group>"; };
 		E3C4963626DF4FAF009DB798 /* ViewController+CallKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+CallKit.swift"; sourceTree = "<group>"; };
 		E3C4963726DF4FAF009DB798 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		E3C4963826DF4FAF009DB798 /* CallKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallKitManager.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				E316135A26DE1A2300A39C20 /* Info.plist */,
 				E3C5B62626F1EDD0002BA6BF /* VKVideoCallModule.swift */,
 				E3C4963926DF4FAF009DB798 /* Meeting.storyboard */,
+				E36FDE6E283272660061EA4D /* ASMMeeting.storyboard */,
 				E3C4963826DF4FAF009DB798 /* CallKitManager.swift */,
 				E3C4963726DF4FAF009DB798 /* MeetingViewController.swift */,
 				E3C4963A26DF4FAF009DB798 /* TwilioDelegates.swift */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3C5B62526F1E3A7002BA6BF /* Media.xcassets in Resources */,
+				E36FDE6F283272660061EA4D /* ASMMeeting.storyboard in Resources */,
 				E3C4963E26DF4FAF009DB798 /* Meeting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
