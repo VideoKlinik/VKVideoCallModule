@@ -325,7 +325,7 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-h6-5La">
-                                <rect key="frame" x="0.0" y="679" width="375" height="133"/>
+                                <rect key="frame" x="0.0" y="679" width="375" height="149"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJv-mc-PG7">
                                         <rect key="frame" x="8" y="12" width="359" height="21"/>
@@ -349,7 +349,7 @@
                                                             <constraint firstAttribute="width" constant="46" id="GhC-x0-F8y"/>
                                                             <constraint firstAttribute="height" constant="46" id="Itb-aO-L0i"/>
                                                         </constraints>
-                                                        <state key="normal" image="Flip-1"/>
+                                                        <state key="normal" image="asm-flip-icon"/>
                                                         <connections>
                                                             <action selector="flipCamera" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9Rj-xW-c6K"/>
                                                         </connections>
@@ -372,7 +372,7 @@
                                                             <constraint firstAttribute="height" constant="46" id="XMu-Lg-ppv"/>
                                                             <constraint firstAttribute="width" constant="46" id="uLr-lK-qWy"/>
                                                         </constraints>
-                                                        <state key="normal" image="ST-Mute">
+                                                        <state key="normal" image="asm-mute-icon">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <state key="selected" image="MuteOn"/>
@@ -398,7 +398,7 @@
                                                             <constraint firstAttribute="height" constant="46" id="Nnt-hy-Enm"/>
                                                             <constraint firstAttribute="width" constant="46" id="yUs-kM-wm1"/>
                                                         </constraints>
-                                                        <state key="normal" image="Leave">
+                                                        <state key="normal" image="asm-leave-icon">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -469,7 +469,7 @@
                             <constraint firstItem="l2t-2b-Pzd" firstAttribute="top" secondItem="aik-8I-rBt" secondAttribute="top" id="cgM-Dx-DQK"/>
                             <constraint firstItem="cve-dv-whh" firstAttribute="top" secondItem="7vS-iM-kZv" secondAttribute="top" constant="30" id="gZ2-k5-Mu5"/>
                             <constraint firstItem="7vS-iM-kZv" firstAttribute="trailing" secondItem="xJp-h6-5La" secondAttribute="trailing" id="i0M-5I-Pdf"/>
-                            <constraint firstAttribute="bottom" secondItem="xJp-h6-5La" secondAttribute="bottom" id="kpc-K3-66q"/>
+                            <constraint firstAttribute="bottom" secondItem="xJp-h6-5La" secondAttribute="bottom" constant="-16" id="kpc-K3-66q"/>
                             <constraint firstItem="aE7-jQ-8dZ" firstAttribute="centerY" secondItem="aik-8I-rBt" secondAttribute="centerY" id="qAU-yp-OIz"/>
                             <constraint firstItem="aE7-jQ-8dZ" firstAttribute="centerX" secondItem="aik-8I-rBt" secondAttribute="centerX" id="wYT-op-xX8"/>
                             <constraint firstItem="Cje-Am-LWm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7vS-iM-kZv" secondAttribute="top" constant="2" id="yrp-9c-fOg"/>
@@ -507,10 +507,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Flip-1" width="66" height="66"/>
-        <image name="Leave" width="66" height="66"/>
         <image name="MuteOn" width="66" height="66"/>
-        <image name="ST-Mute" width="66" height="66"/>
+        <image name="asm-flip-icon" width="46" height="46"/>
+        <image name="asm-leave-icon" width="46" height="46"/>
+        <image name="asm-mute-icon" width="46" height="46"/>
         <image name="pin-icon" width="66" height="66"/>
         <image name="record-icon" width="27" height="27"/>
         <image name="unpin-icon" width="66" height="66"/>

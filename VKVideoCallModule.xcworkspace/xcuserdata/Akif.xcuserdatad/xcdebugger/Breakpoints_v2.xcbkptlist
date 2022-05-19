@@ -3,22 +3,4 @@
    uuid = "CB618F69-B4ED-47CD-8717-99341CD37C0D"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1D2EC128-9AE1-4679-8B9E-0D9CDBF9E0F8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VKVideoCallModule/VKVideoCallModule.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "startMeeting(from:targetApp:accessToken:roomName:callUUID:callKitProvider:isRecording:suggestButtonEnabled:willEndAutomatically:userType:patientName:primaryDoctorName:secondaryDoctorName:interpreterName:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

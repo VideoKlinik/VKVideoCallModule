@@ -312,7 +312,7 @@ class MeetingViewController: UIViewController {
         nameLabel.text = doctorName
         switch targetApp {
         case .asm:
-            buttonsView.roundCorners([.topLeft, .topRight], radius: 16)
+            buttonsView.layer.cornerRadius = 16
         case .videoKlinik:
             buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
             nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
@@ -472,10 +472,12 @@ class MeetingViewController: UIViewController {
             
             if isMuted {
                 self.localAudioTrack!.isEnabled = false
-                self.muteButton.setImage(UIImage(named: "ST-UnMute"), for: .normal)
+                let imageName = targetApp == .asm ? "asm-unmute-icon":"ST-UnMute"
+                self.muteButton.setImage(UIImage(named: imageName), for: .normal)
             }else{
+                let imageName = targetApp == .asm ? "asm-mute-icon":"ST-Mute"
                 self.localAudioTrack!.isEnabled = true
-                self.muteButton.setImage(UIImage(named: "ST-Mute"), for: .normal)
+                self.muteButton.setImage(UIImage(named: imageName), for: .normal)
             }
             
             
@@ -578,7 +580,7 @@ class MeetingViewController: UIViewController {
             }
             changeSpeaker(participant: participant)
         }
-        if !isPinned {
+        if pinButton != nil, !isPinned {
             pinButtonAction(pinButton)
         }
     }
