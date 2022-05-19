@@ -144,6 +144,9 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqr-gy-hDb">
                                                 <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="111.66666666666667"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="focusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1xJ-y6-LLc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -204,6 +207,9 @@
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-Uz-dKd">
                                                 <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="111.66666666666667"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="focusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7hO-y2-aMU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -268,6 +274,9 @@
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vah-S1-pje">
                                                 <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="111.66666666666667"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="focusButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ufl-O3-evr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.74901960779999999" green="0.78039215689999997" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -499,6 +508,12 @@
                         <outlet property="videoStackViewTopConstraint" destination="gZ2-k5-Mu5" id="69M-bu-2dc"/>
                         <outletCollection property="videoContainerViews" destination="Qva-gq-jPK" collectionClass="NSMutableArray" id="saT-lR-GvQ"/>
                         <outletCollection property="videoViews" destination="mSe-2p-FUA" collectionClass="NSMutableArray" id="Th2-Op-P54"/>
+                        <outletCollection property="videoContainerViews" destination="Ext-Mh-ZIg" collectionClass="NSMutableArray" id="tV3-4F-oz0"/>
+                        <outletCollection property="videoViews" destination="W3t-I9-jJT" collectionClass="NSMutableArray" id="AjR-Td-zzL"/>
+                        <outletCollection property="videoContainerViews" destination="nxs-4T-JUx" collectionClass="NSMutableArray" id="XV0-el-CA4"/>
+                        <outletCollection property="videoViews" destination="it4-uq-WxA" collectionClass="NSMutableArray" id="8me-Su-5Vs"/>
+                        <outletCollection property="videoContainerViews" destination="BYn-Sg-AKA" collectionClass="NSMutableArray" id="a73-xw-tcQ"/>
+                        <outletCollection property="videoViews" destination="BNG-iE-fFw" collectionClass="NSMutableArray" id="ZyA-LI-z0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

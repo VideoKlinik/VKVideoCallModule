@@ -415,9 +415,11 @@ class MeetingViewController: UIViewController {
             dominantView = remoteView3Container
             dominantUserNameLabel = participant3NameLabel
         }
-        dominantView.backgroundColor = UIColor(hex: "376CE9")
-        dominantUserNameLabel.textColor = .white
-        dominantUserNameLabel.superview?.backgroundColor = UIColor(hex: "376CE9")
+        if targetApp != .asm {
+            dominantView.backgroundColor = UIColor(hex: "376CE9")
+            dominantUserNameLabel.textColor = .white
+            dominantUserNameLabel.superview?.backgroundColor = UIColor(hex: "376CE9")
+        }
     }
 
     func startPreview() {
@@ -560,7 +562,9 @@ class MeetingViewController: UIViewController {
                 remoteViewContainer.isHidden = false
             }
             self.mainView.shouldMirror = camera?.device?.position == .front
-            setBorder(for: nil)
+            if targetApp != .asm {
+                setBorder(for: nil)
+            }
         }
         else {
             self.mainView.shouldMirror = false
@@ -582,6 +586,8 @@ class MeetingViewController: UIViewController {
         }
         if pinButton != nil, !isPinned {
             pinButtonAction(pinButton)
+        } else {
+            
         }
     }
     
@@ -692,7 +698,7 @@ class MeetingViewController: UIViewController {
                     self.remoteParticipant = participant
                     if self.room?.remoteParticipants.count == 1 {
                         self.remoteViewContainer.isHidden = true
-                        if !isPinned {
+                        if !isPinned, targetApp != .asm {
                             self.setBorder(for: participant)
                         }
                     }
