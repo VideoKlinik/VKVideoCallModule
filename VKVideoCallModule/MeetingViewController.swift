@@ -120,6 +120,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var remoteViewContainer: UIView!
     @IBOutlet weak var remoteView: VideoView!
     @IBOutlet weak var participantNameLabel: UILabel!
+    @IBOutlet weak var remoteFocusButton: UIButton!
     
     @IBOutlet weak var remoteView2Container: UIView!
     @IBOutlet weak var remoteView2: VideoView!
@@ -146,6 +147,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var suggestButton: UIButton!
+    @IBOutlet weak var stopVideoButton: UIButton!
     
     var animationTimer:Timer?
     var soundTimer:Timer?
@@ -154,6 +156,7 @@ class MeetingViewController: UIViewController {
 //    var audioPlayer:AVAudioPlayer!
     
     var delegate:MeetingDelegate?
+    var isCameraOn = true
     private var connectionTimer:Timer?
     
     var showDuration = false
@@ -436,7 +439,9 @@ class MeetingViewController: UIViewController {
             localVideoTrack = LocalVideoTrack.init(source: camera!, enabled: true, name: "Camera")
             
             // Add renderer to video track for local preview
-            localVideoTrack!.addRenderer(self.previewView)
+            if isCameraOn {
+                localVideoTrack!.addRenderer(self.previewView)
+            }
             logMessage(messageText: "Video track created")
             
             if (frontCamera != nil && backCamera != nil) {
@@ -444,7 +449,6 @@ class MeetingViewController: UIViewController {
                 let tap = UITapGestureRecognizer(target: self, action: #selector(MeetingViewController.flipCamera))
                 self.previewView.addGestureRecognizer(tap)
             }
-            
             
             camera!.startCapture(device: frontCamera != nil ? frontCamera! : backCamera!) { (captureDevice, videoFormat, error) in
                 if let error = error {
@@ -464,6 +468,25 @@ class MeetingViewController: UIViewController {
 
     @IBAction func suggestButtonAction(_ sender: Any) {
         delegate?.suggestButtonTapped()
+    }
+    
+    @IBAction func stopVideoButtonAction(_ sender: Any) {
+        if let participant = room?.localParticipant, let videoTrack = localVideoTrack {
+            if isCameraOn {
+                videoTrack.removeRenderer(previewView)
+                stopVideoButton.setImage(R.image.cameraOn(), for: .normal)
+                participant.unpublishVideoTrack(videoTrack)
+            }
+            else {
+                videoTrack.addRenderer(previewView)
+                stopVideoButton.setImage(R.image.cameraOff(), for: .normal)
+                participant.publishVideoTrack(videoTrack)
+            }
+            isCameraOn = !isCameraOn
+            if !isCameraOn, videoTrack.renderers.count > 0 {
+                focusButtonAction(remoteFocusButton)
+            }
+        }
     }
     
     @IBAction func mute(_ sender: Any) {
@@ -552,6 +575,9 @@ class MeetingViewController: UIViewController {
         }
         localVideoTrack?.removeRenderer(self.mainView)
         if sender.tag == 0 {
+            guard isCameraOn else {
+                return
+            }
             nameLabel.text = getCurrentUserName()//User.currentUser.displayName
             if self.dominantSpeaker != nil {
                 cleanupRemoteParticipant(self.dominantSpeaker!, from: self.mainView)

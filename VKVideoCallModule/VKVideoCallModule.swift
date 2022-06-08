@@ -35,10 +35,11 @@ public enum TargetApp {
 final public class VKVideoCallModule {
     static var meetingVC: MeetingViewController!
     
-    public class func startMeeting(from viewController: UIViewController, targetApp: TargetApp, accessToken: String, roomName: String, callUUID: UUID, callKitProvider: CXProvider, isRecording: Bool = false, suggestButtonEnabled: Bool = false, willEndAutomatically: Bool = false, userType: VKUserType, patientName: String, primaryDoctorName: String, secondaryDoctorName: String? = nil, interpreterName: String? = nil, completion:(()->())?) {
+    public class func startMeeting(from viewController: UIViewController, targetApp: TargetApp, accessToken: String, roomName: String, isCameraOn: Bool = true, callUUID: UUID, callKitProvider: CXProvider, isRecording: Bool = false, suggestButtonEnabled: Bool = false, willEndAutomatically: Bool = false, userType: VKUserType, patientName: String, primaryDoctorName: String, secondaryDoctorName: String? = nil, interpreterName: String? = nil, completion:(()->())?) {
         let storyboardName = targetApp == .asm ? "ASMMeeting":"Meeting"
         meetingVC = UIStoryboard(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: "MeetingViewController") as! MeetingViewController
         meetingVC.delegate = viewController as? MeetingDelegate
+        meetingVC.isCameraOn = isCameraOn
         meetingVC.targetApp = targetApp
         meetingVC.accessToken = accessToken
         meetingVC.roomName = roomName

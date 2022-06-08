@@ -346,7 +346,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-mk-yB7">
-                                        <rect key="frame" x="88.666666666666686" y="41" width="198" height="46"/>
+                                        <rect key="frame" x="50.666666666666657" y="41" width="274" height="46"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auQ-Lf-t3q">
                                                 <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
@@ -373,7 +373,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzh-Tl-Dzg">
-                                                <rect key="frame" x="75.999999999999986" y="0.0" width="46" height="46"/>
+                                                <rect key="frame" x="76" y="0.0" width="46" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="te0-q2-eXb">
                                                         <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
@@ -423,11 +423,36 @@
                                                     <constraint firstItem="OgJ-SB-1E7" firstAttribute="leading" secondItem="JRQ-Ol-ak0" secondAttribute="leading" id="eoE-5k-v9V"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yav-nb-QQO">
+                                                <rect key="frame" x="228.00000000000003" y="0.0" width="45.999999999999972" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYn-JD-QVV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="46" id="4Pa-8v-SWq"/>
+                                                            <constraint firstAttribute="width" constant="46" id="7Mn-0B-I0E"/>
+                                                        </constraints>
+                                                        <state key="normal" image="record-icon">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="stopVideoButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="X29-Uv-xhl"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="eYn-JD-QVV" secondAttribute="bottom" id="Flo-3q-B8a"/>
+                                                    <constraint firstItem="eYn-JD-QVV" firstAttribute="leading" secondItem="yav-nb-QQO" secondAttribute="leading" id="bCG-7g-GGY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eYn-JD-QVV" secondAttribute="trailing" id="pMZ-dZ-wEs"/>
+                                                    <constraint firstItem="eYn-JD-QVV" firstAttribute="top" secondItem="yav-nb-QQO" secondAttribute="top" id="wOg-Gx-QaZ"/>
+                                                </constraints>
+                                            </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPv-qF-DyP">
-                                                <rect key="frame" x="198" y="0.0" width="0.0" height="46"/>
+                                                <rect key="frame" x="274" y="0.0" width="0.0" height="46"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nc-er-M9C">
-                                                        <rect key="frame" x="-33.000000000000028" y="-10" width="66" height="66"/>
+                                                        <rect key="frame" x="-33" y="-10" width="66" height="66"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="66" id="0gD-le-dLm"/>
@@ -497,12 +522,14 @@
                         <outlet property="previewContainer" destination="Qva-gq-jPK" id="b68-JV-7eY"/>
                         <outlet property="previewView" destination="mSe-2p-FUA" id="Hr9-7l-wvd"/>
                         <outlet property="recordView" destination="Cje-Am-LWm" id="1Ss-Cd-lo3"/>
+                        <outlet property="remoteFocusButton" destination="Yqr-gy-hDb" id="ZdT-cH-UEL"/>
                         <outlet property="remoteView" destination="W3t-I9-jJT" id="GGH-Kb-Axi"/>
                         <outlet property="remoteView2" destination="it4-uq-WxA" id="di0-LZ-FaM"/>
                         <outlet property="remoteView2Container" destination="nxs-4T-JUx" id="QoO-ne-ILJ"/>
                         <outlet property="remoteView3" destination="BNG-iE-fFw" id="TjN-II-ZL9"/>
                         <outlet property="remoteView3Container" destination="BYn-Sg-AKA" id="A6M-g3-Imq"/>
                         <outlet property="remoteViewContainer" destination="Ext-Mh-ZIg" id="dS7-4k-KOR"/>
+                        <outlet property="stopVideoButton" destination="eYn-JD-QVV" id="JBX-SG-jDE"/>
                         <outlet property="userNameLabel" destination="Hhq-e6-mzj" id="xoi-ct-1e6"/>
                         <outlet property="videoStackView" destination="cve-dv-whh" id="wJu-su-5cI"/>
                         <outlet property="videoStackViewTopConstraint" destination="gZ2-k5-Mu5" id="69M-bu-2dc"/>

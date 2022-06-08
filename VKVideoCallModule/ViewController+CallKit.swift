@@ -212,7 +212,7 @@ extension MeetingViewController {
 
             // Use the local media that we prepared earlier.
             builder.audioTracks = self.localAudioTrack != nil ? [self.localAudioTrack!] : [LocalAudioTrack]()
-            builder.videoTracks = self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
+            builder.videoTracks = self.isCameraOn && self.localVideoTrack != nil ? [self.localVideoTrack!] : [LocalVideoTrack]()
 
             // Use the preferred audio codec
             if let preferredAudioCodec = Settings.shared.audioCodec {
