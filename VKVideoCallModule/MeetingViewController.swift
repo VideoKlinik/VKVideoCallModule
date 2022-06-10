@@ -474,12 +474,12 @@ class MeetingViewController: UIViewController {
         if let participant = room?.localParticipant, let videoTrack = localVideoTrack {
             if isCameraOn {
                 videoTrack.removeRenderer(previewView)
-                stopVideoButton.setImage(R.image.cameraOn(), for: .normal)
+                stopVideoButton.setImage(UIImage(named: "CameraOn"), for: .normal)
                 participant.unpublishVideoTrack(videoTrack)
             }
             else {
                 videoTrack.addRenderer(previewView)
-                stopVideoButton.setImage(R.image.cameraOff(), for: .normal)
+                stopVideoButton.setImage(UIImage(named: "CameraOff"), for: .normal)
                 participant.publishVideoTrack(videoTrack)
             }
             isCameraOn = !isCameraOn
