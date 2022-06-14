@@ -148,6 +148,7 @@ class MeetingViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var suggestButton: UIButton!
     @IBOutlet weak var stopVideoButton: UIButton!
+    @IBOutlet weak var switchCameraView: UIView!
     
     var animationTimer:Timer?
     var soundTimer:Timer?
@@ -156,7 +157,11 @@ class MeetingViewController: UIViewController {
 //    var audioPlayer:AVAudioPlayer!
     
     var delegate:MeetingDelegate?
-    var isCameraOn = true
+    var isCameraOn = true {
+        didSet {
+            switchCameraView?.isHidden = !isCameraOn
+        }
+    }
     private var connectionTimer:Timer?
     
     var showDuration = false
@@ -313,6 +318,15 @@ class MeetingViewController: UIViewController {
 //        LogManager.log("Meeting will appear")
         UIApplication.shared.isIdleTimerDisabled = true
         nameLabel.text = doctorName
+        var imageName = ""
+        if targetApp == .asm {
+            imageName = isCameraOn ? "asm-camera-off-icon":"asm-camera-on-icon"
+        } else {
+            imageName = isCameraOn ? "CameraOff":"CameraOn"
+        }
+        let cameraImage = UIImage(named: imageName)
+        stopVideoButton.setImage(cameraImage, for: .normal)
+        switchCameraView?.isHidden = !isCameraOn
         switch targetApp {
         case .asm:
             buttonsView.layer.cornerRadius = 16
@@ -474,12 +488,14 @@ class MeetingViewController: UIViewController {
         if let participant = room?.localParticipant, let videoTrack = localVideoTrack {
             if isCameraOn {
                 videoTrack.removeRenderer(previewView)
-                stopVideoButton.setImage(UIImage(named: "CameraOn"), for: .normal)
+                let imageName = targetApp == .asm ? "asm-camera-on-icon":"CameraOn"
+                stopVideoButton.setImage(UIImage(named: imageName), for: .normal)
                 participant.unpublishVideoTrack(videoTrack)
             }
             else {
                 videoTrack.addRenderer(previewView)
-                stopVideoButton.setImage(UIImage(named: "CameraOff"), for: .normal)
+                let imageName = targetApp == .asm ? "asm-camera-off-icon":"CameraOff"
+                stopVideoButton.setImage(UIImage(named: imageName), for: .normal)
                 participant.publishVideoTrack(videoTrack)
             }
             isCameraOn = !isCameraOn
