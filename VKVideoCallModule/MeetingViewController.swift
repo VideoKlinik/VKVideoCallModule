@@ -319,26 +319,24 @@ class MeetingViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = true
         nameLabel.text = doctorName
         var imageName = ""
-        if targetApp == .asm {
+        switch targetApp {
+        case .asm:
+            buttonsView.layer.cornerRadius = 16
             imageName = isCameraOn ? "asm-camera-off-icon":"asm-camera-on-icon"
-        } else {
+        case .videoKlinik:
+            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
+            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
+            imageName = isCameraOn ? "kib-camera-off":"kib-camera-on"
+        case .kib:
+            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
+            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
             imageName = isCameraOn ? "CameraOff":"CameraOn"
+        case .none:
+            break
         }
         let cameraImage = UIImage(named: imageName)
         stopVideoButton.setImage(cameraImage, for: .normal)
         switchCameraView?.isHidden = !isCameraOn
-        switch targetApp {
-        case .asm:
-            buttonsView.layer.cornerRadius = 16
-        case .videoKlinik:
-            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
-            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
-        case .iComed:
-            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
-            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
-        case .none:
-            break
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -432,7 +430,7 @@ class MeetingViewController: UIViewController {
             dominantView = remoteView3Container
             dominantUserNameLabel = participant3NameLabel
         }
-        if targetApp != .asm {
+        if targetApp == .videoKlinik {
             dominantView.backgroundColor = UIColor(hex: "376CE9")
             dominantUserNameLabel.textColor = .white
             dominantUserNameLabel.superview?.backgroundColor = UIColor(hex: "376CE9")
@@ -486,15 +484,24 @@ class MeetingViewController: UIViewController {
     
     @IBAction func stopVideoButtonAction(_ sender: Any) {
         if let participant = room?.localParticipant, let videoTrack = localVideoTrack {
+            var imageName = ""
+            switch targetApp {
+            case .asm:
+                imageName = isCameraOn ? "asm-camera-off-icon":"asm-camera-on-icon"
+            case .videoKlinik:
+                imageName = isCameraOn ? "kib-camera-off":"kib-camera-on"
+            case .kib:
+                imageName = isCameraOn ? "CameraOff":"CameraOn"
+            case .none:
+                break
+            }
             if isCameraOn {
                 videoTrack.removeRenderer(previewView)
-                let imageName = targetApp == .asm ? "asm-camera-on-icon":"CameraOn"
                 stopVideoButton.setImage(UIImage(named: imageName), for: .normal)
                 participant.unpublishVideoTrack(videoTrack)
             }
             else {
                 videoTrack.addRenderer(previewView)
-                let imageName = targetApp == .asm ? "asm-camera-off-icon":"CameraOff"
                 stopVideoButton.setImage(UIImage(named: imageName), for: .normal)
                 participant.publishVideoTrack(videoTrack)
             }
@@ -510,13 +517,21 @@ class MeetingViewController: UIViewController {
             let isMuted = localAudioTrack.isEnabled
             let muteAction = CXSetMutedCallAction(call: uuid, muted: isMuted)
             let transaction = CXTransaction(action: muteAction)
-            
+            var imageName = ""
+            switch targetApp {
+            case .asm:
+                imageName = isMuted ? "asm-unmute-icon":"asm-mute-icon"
+            case .videoKlinik:
+                imageName = isMuted ? "kib-mic-on":"kib-mic-off"
+            case .kib:
+                imageName = isMuted ? "ST-UnMute":"ST-Mute"
+            case .none:
+                break
+            }
             if isMuted {
                 self.localAudioTrack!.isEnabled = false
-                let imageName = targetApp == .asm ? "asm-unmute-icon":"ST-UnMute"
                 self.muteButton.setImage(UIImage(named: imageName), for: .normal)
             }else{
-                let imageName = targetApp == .asm ? "asm-mute-icon":"ST-Mute"
                 self.localAudioTrack!.isEnabled = true
                 self.muteButton.setImage(UIImage(named: imageName), for: .normal)
             }
@@ -604,7 +619,7 @@ class MeetingViewController: UIViewController {
                 remoteViewContainer.isHidden = false
             }
             self.mainView.shouldMirror = camera?.device?.position == .front
-            if targetApp != .asm {
+            if targetApp == .videoKlinik {
                 setBorder(for: nil)
             }
         }
@@ -740,7 +755,7 @@ class MeetingViewController: UIViewController {
                     self.remoteParticipant = participant
                     if self.room?.remoteParticipants.count == 1 {
                         self.remoteViewContainer.isHidden = true
-                        if !isPinned, targetApp != .asm {
+                        if !isPinned, targetApp == .videoKlinik {
                             self.setBorder(for: participant)
                         }
                     }

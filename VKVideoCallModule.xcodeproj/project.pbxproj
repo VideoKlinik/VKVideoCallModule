@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E314BEB728896F9C00337850 /* KIBMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E314BEB628896F9C00337850 /* KIBMeeting.storyboard */; };
 		E316135B26DE1A2300A39C20 /* VKVideoCallModule.h in Headers */ = {isa = PBXBuildFile; fileRef = E316135926DE1A2300A39C20 /* VKVideoCallModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E36FDE6F283272660061EA4D /* ASMMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36FDE6E283272660061EA4D /* ASMMeeting.storyboard */; };
 		E3C4963B26DF4FAF009DB798 /* ViewController+CallKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C4963626DF4FAF009DB798 /* ViewController+CallKit.swift */; };
@@ -23,6 +24,7 @@
 		908F174ECFF0C12537ED47C9 /* Pods-VKVideoCallModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKVideoCallModule.release.xcconfig"; path = "Target Support Files/Pods-VKVideoCallModule/Pods-VKVideoCallModule.release.xcconfig"; sourceTree = "<group>"; };
 		B12D145D67C90B6B02F787F8 /* Pods-VKVideoCallModule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKVideoCallModule.debug.xcconfig"; path = "Target Support Files/Pods-VKVideoCallModule/Pods-VKVideoCallModule.debug.xcconfig"; sourceTree = "<group>"; };
 		C7D5C69F226E2C14DF24F31D /* Pods_VKVideoCallModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKVideoCallModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E314BEB628896F9C00337850 /* KIBMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KIBMeeting.storyboard; sourceTree = "<group>"; };
 		E316135626DE1A2300A39C20 /* VKVideoCallModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VKVideoCallModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E316135926DE1A2300A39C20 /* VKVideoCallModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKVideoCallModule.h; sourceTree = "<group>"; };
 		E316135A26DE1A2300A39C20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				E3C5B62626F1EDD0002BA6BF /* VKVideoCallModule.swift */,
 				E3C4963926DF4FAF009DB798 /* Meeting.storyboard */,
 				E36FDE6E283272660061EA4D /* ASMMeeting.storyboard */,
+				E314BEB628896F9C00337850 /* KIBMeeting.storyboard */,
 				E3C4963826DF4FAF009DB798 /* CallKitManager.swift */,
 				E3C4963726DF4FAF009DB798 /* MeetingViewController.swift */,
 				E3C4963A26DF4FAF009DB798 /* TwilioDelegates.swift */,
@@ -173,6 +176,7 @@
 				E3C5B62526F1E3A7002BA6BF /* Media.xcassets in Resources */,
 				E36FDE6F283272660061EA4D /* ASMMeeting.storyboard in Resources */,
 				E3C4963E26DF4FAF009DB798 /* Meeting.storyboard in Resources */,
+				E314BEB728896F9C00337850 /* KIBMeeting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
