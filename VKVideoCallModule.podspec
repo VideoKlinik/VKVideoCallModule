@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 s.name               = "VKVideoCallModule"
 
-s.version            = "1.0.0"
+s.version            = "1.0.2"
 
 s.summary         = "VKVideoCallModule"
 
@@ -16,7 +16,7 @@ s.platform            = :ios
 
 s.ios.deployment_target = '11.0'
 
-s.source              = { :git => "https://github.com/VideoKlinik/VKVideoCallModule", :tag => "1.0.0" }
+s.source              = { :git => "https://github.com/VideoKlinik/VKVideoCallModule", :tag => "1.0.2" }
 
 s.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => "$(SRCROOT)/"}
 
