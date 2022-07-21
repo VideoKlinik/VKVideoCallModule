@@ -326,11 +326,10 @@ class MeetingViewController: UIViewController {
         case .videoKlinik:
             buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
             nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
-            imageName = isCameraOn ? "kib-camera-off":"kib-camera-on"
-        case .kib:
-            buttonsView.layer.cornerRadius = buttonsView.bounds.height / 2
-            nameLabel.superview?.layer.cornerRadius = (nameLabel.superview?.bounds.height ?? 0) / 2
             imageName = isCameraOn ? "CameraOff":"CameraOn"
+        case .kib:
+            buttonsView.layer.cornerRadius = 16
+            imageName = isCameraOn ? "kib-camera-off":"kib-camera-on"
         case .none:
             break
         }
@@ -487,11 +486,11 @@ class MeetingViewController: UIViewController {
             var imageName = ""
             switch targetApp {
             case .asm:
-                imageName = isCameraOn ? "asm-camera-off-icon":"asm-camera-on-icon"
+                imageName = !isCameraOn ? "asm-camera-off-icon":"asm-camera-on-icon"
             case .videoKlinik:
-                imageName = isCameraOn ? "kib-camera-off":"kib-camera-on"
+                imageName = !isCameraOn ? "CameraOff":"CameraOn"
             case .kib:
-                imageName = isCameraOn ? "CameraOff":"CameraOn"
+                imageName = !isCameraOn ? "kib-camera-off":"kib-camera-on"
             case .none:
                 break
             }
@@ -522,9 +521,9 @@ class MeetingViewController: UIViewController {
             case .asm:
                 imageName = isMuted ? "asm-unmute-icon":"asm-mute-icon"
             case .videoKlinik:
-                imageName = isMuted ? "kib-mic-on":"kib-mic-off"
-            case .kib:
                 imageName = isMuted ? "ST-UnMute":"ST-Mute"
+            case .kib:
+                imageName = isMuted ? "kib-mic-on":"kib-mic-off"
             case .none:
                 break
             }
